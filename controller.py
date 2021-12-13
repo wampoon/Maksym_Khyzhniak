@@ -84,4 +84,3 @@ print(s.check_if_displayed('/html/body/div[1]/div[3]/div[3]/div[2]/form/table/tb
 
 # finishing to avoid many windows
 s.finish()
-
