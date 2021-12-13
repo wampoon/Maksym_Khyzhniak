@@ -43,6 +43,10 @@ class Task:
             return res_good
         else: return res_bad
 
+    def finish(self):
+        self.driver.close()
+        self.driver.quit()
+
         
 
 # init driver 
@@ -77,4 +81,7 @@ s.btn_click('/html/body/div[1]/div[3]/div[3]/div[2]/form/p/input[2]')
 
 # checking if data was removed
 print(s.check_if_displayed('/html/body/div[1]/div[3]/div[3]/div[2]/form/table/tbody/tr', 'No Records Found'))
+
+# finishing to avoid many windows
+s.finish()
 
