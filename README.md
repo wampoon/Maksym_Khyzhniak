@@ -15,5 +15,4 @@
 ## How to run:
 1. Clone repo to your local repo
 2. Run `pip install -r requirements.txt` in your terminal
-3. 'controller.py' and 'runner.py' <b>must be in the same folder</b>
-4. Run `runner.py` from terminal
+3. Type `behave` from terminal while being in the folder with project 
