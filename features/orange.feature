@@ -38,3 +38,9 @@ Feature: OrangeHRM Demo https://opensource-demo.orangehrmlive.com/
             And put '5' in 'Maximum Salary' field
             And click 'Save' button in editing section
         Then in 'Assigned Currencies' section must be displayed row {'Currency':'United States Dollar, 'Minimum Salary':'1.00', 'Maximum Salary':'5.00'}
+
+    Scenario: removing added Currency
+        Given we sucessfully added new Currency
+        When we click checkbox in newly added Currency row
+            And click "Delete" button
+        Then newly added row must become invisible

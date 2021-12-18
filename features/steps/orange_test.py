@@ -181,11 +181,27 @@ def step_impl(context):
 
 @then(u'in \'Assigned Currencies\' section must be displayed row {\'Currency\':\'United States Dollar, \'Minimum Salary\':\'1.00\', \'Maximum Salary\':\'5.00\'}')
 def step_impl(context):
-    rows = pgrades.find_elements([By.XPATH, '/html/body/div[1]/div[3]/div[3]/div[2]/form/table/tbody/tr'])
-    res = Results.res_bad
-    for i in rows:
-        if 'United States Dollar' in i.text: res = Results.res_good
-        else: res = Results.res_bad
-
+    res = pgrades.check_if_displayed('United States Dollar', '1.00', '5.00')
     assert res==Results.res_good
 
+
+@given(u'we sucessfully added new Currency')
+def step_impl(context):
+    res = pgrades.check_if_displayed('United States Dollar', '1.00', '5.00')
+    assert res==Results.res_good
+
+
+@when(u'we click checkbox in newly added Currency row')
+def step_impl(context):
+    pgrades.click_select_currency()
+
+
+@when(u'click "Delete" button')
+def step_impl(context):
+    pgrades.click_delete_currency()
+
+
+@then(u'newly added row must become invisible')
+def step_impl(context):
+    res = pgrades.check_if_displayed('No Records Found', None, None)
+    assert res==Results.res_bad

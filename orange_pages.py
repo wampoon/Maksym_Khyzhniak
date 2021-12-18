@@ -1,6 +1,7 @@
 from selenium.webdriver.common import by
 from base_app import BasePage
 from selenium.webdriver.common.by import By
+from utils import Results
 import uuid
 
 class Locators:
@@ -112,3 +113,23 @@ class PaygradesPage(BasePage):
         save_currency = self.find_element(Locators.CURRENCY_SAVE_BTN)
         save_currency.click()
         return save_currency
+
+    def check_if_displayed(self, currency, min_wage, max_wage):
+        rows = self.find_elements(Locators.NEW_CURRENCY_ROW)
+        res = Results.res_bad
+        check_str = f"{currency} {min_wage} {max_wage}".strip()
+        for i in rows:
+            if check_str in i.text: res = Results.res_good
+            else: res = Results.res_bad
+        
+        return res
+
+    def click_select_currency(self):
+        select_currency_checkbox = self.find_element(Locators.NEW_CURRENCY_CHECKBOX)
+        select_currency_checkbox.click()
+        return select_currency_checkbox
+
+    def click_delete_currency(self):
+        delete_currency_btn = self.find_element(Locators.CURRENCY_DELETE_BTN)
+        delete_currency_btn.click()
+        return delete_currency_btn
