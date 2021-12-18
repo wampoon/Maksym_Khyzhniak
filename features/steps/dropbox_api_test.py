@@ -10,7 +10,8 @@ d = DeleteRequest()
 
 @given(u'file named "file.txt"')
 def step_impl(context):
-    assert os.path.isfile('./sample_files/file.txt')==True
+    file_exists = os.path.isfile('features/sample_files/file.txt')
+    assert file_exists==True
 
 
 @when(u'we upload file "file.txt" to Dropbox')
