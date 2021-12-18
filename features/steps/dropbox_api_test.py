@@ -1,5 +1,5 @@
 from behave import *
-from request_factory import *
+from features.request_factory import *
 import os
 
 
